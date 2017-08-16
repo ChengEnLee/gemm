@@ -1,11 +1,7 @@
-CUDALNC :=-lcublas -lcusparse -lcudart -lcusolver -lmagma_sparse -lmagma
+CUDALNC :=-lcublas -lcusparse -lcudart -lcusolve
 
-all: CPU GPU
-	g++ main.o -o test.run -L $(CUDALNC)
-CPU:
-	g++ main.c -c
 GPU:
-	nvcc
+	nvcc main.cu $(CUDALNC)
 
 clean:
-	rm *.o
+	rm *.run
